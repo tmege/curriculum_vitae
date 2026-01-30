@@ -1,10 +1,10 @@
 # 📄 CV en C - Curriculum Vitae Generator
 
-## 🎯 Descripción
+## Descripción
 
 Este proyecto implementa mi CV completo utilizando estructuras de datos en C, específicamente listas enlazadas simples. Es un ejemplo práctico de gestión dinámica de memoria, organización modular de código y uso de estructuras complejas.
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 ```
 cv/
@@ -17,7 +17,7 @@ cv/
 └── README.md      # Este archivo
 ```
 
-## 📚 Estructuras de datos
+## Estructuras de datos
 
 ### Principales estructuras:
 
@@ -30,7 +30,7 @@ cv/
 
 Todas las listas utilizan nodos enlazados simples (`next`).
 
-## 🔧 Compilación y uso
+## Compilación y uso
 
 ### Compilar:
 ```bash
@@ -56,7 +56,7 @@ make fclean  # Elimina .o y ejecutable
 make re      # Recompila todo
 ```
 
-## 🎨 Características
+## Características
 
 ✅ Gestión dinámica de memoria (malloc/free)
 ✅ Listas enlazadas simples
@@ -66,7 +66,7 @@ make re      # Recompila todo
 ✅ Interfaz visual en terminal con Unicode
 ✅ Estructura escalable y mantenible
 
-## 📝 Conceptos demostrados
+## Conceptos demostrados
 
 - **Estructuras y typedef**
 - **Listas enlazadas**
@@ -76,7 +76,7 @@ make re      # Recompila todo
 - **Headers y prototipos**
 - **Liberación recursiva de memoria**
 
-## 🚀 Posibles mejoras
+## Posibles mejoras
 
 - [ ] Exportar a JSON/XML
 - [ ] Búsqueda de competencias específicas
@@ -85,14 +85,7 @@ make re      # Recompila todo
 - [ ] Estadísticas (años de experiencia, etc.)
 - [ ] Interfaz interactiva (menú)
 
-## 👨‍💻 Autor
-
-**Tu Nombre**
-- 📧 tu.email@ejemplo.com
-- 📍 Barcelona, España
-- 🏫 42 Barcelona
-
-## 📄 Licencia
+## Licencia
 
 Este proyecto es de código abierto y está disponible como ejemplo educativo.
 

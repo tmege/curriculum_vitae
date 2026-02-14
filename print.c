@@ -208,9 +208,9 @@ void	run_menu(t_cv *cv)
 
 	if (!cv)
 		return ;
+	print_header(cv);
 	while (1)
 	{
-		print_header(cv);
 		print_menu();
 		if (read(STDIN_FILENO, buf, 1) <= 0)
 			break ;

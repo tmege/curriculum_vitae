@@ -125,50 +125,104 @@ void	print_experiencia(t_experiencia *exp)
 	}
 }
 
-void	print_cv(t_cv *cv)
+void	print_header(t_cv *cv)
+{
+	int	width;
+	int	name_len;
+	int	pad_left;
+	int	pad_right;
+	int	i;
+
+	if (!cv)
+		return ;
+	width = 64;
+	name_len = strlen(cv->nombre);
+	pad_left = (width - name_len) / 2;
+	pad_right = width - name_len - pad_left;
+	printf("\n");
+	printf("████████████████████████████████████████████████████████████████████\n");
+	printf("██                                                                ██\n");
+	printf("██");
+	i = -1;
+	while (++i < pad_left)
+		printf(" ");
+	printf("%s", cv->nombre);
+	i = -1;
+	while (++i < pad_right)
+		printf(" ");
+	printf("██\n");
+	printf("██                                                                ██\n");
+	printf("████████████████████████████████████████████████████████████████████\n");
+	printf("\n");
+	printf("  📍 %s  |  📧 %s  |  📞 %s\n", cv->ubicacion, cv->email,
+		cv->telefono);
+}
+
+void	print_perfil(t_cv *cv)
 {
 	if (!cv)
 		return ;
-	
-	// Header
-	printf("\n");
-	printf("████████████████████████████████████████████████████████████████████\n");
-	printf("██                                                                ██\n");
-	printf("██                         %s                          ██\n", cv->nombre);
-	printf("██                                                                ██\n");
-	printf("████████████████████████████████████████████████████████████████████\n");
-	printf("\n");
-	printf("📍 %s  |  📧 %s  |  📞 %s\n", cv->ubicacion, cv->email, cv->telefono);
-	print_separator();
-	
-	// Perfil
 	printf("╔══════════════════════════════════════════════════════════════════╗\n");
 	printf("║                     PERFIL PROFESIONAL                           ║\n");
 	printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
 	printf("%s\n", cv->perfil);
+}
+
+static void	print_menu(void)
+{
+	printf("\n");
 	print_separator();
-	
-	// Sections
-	if (cv->competencias)
-	{
+	printf("  ┌─────────────────────────────────────┐\n");
+	printf("  │          SELECCIONA UNA SECCIÓN      │\n");
+	printf("  ├─────────────────────────────────────┤\n");
+	printf("  │  [1]  Perfil profesional             │\n");
+	printf("  │  [2]  Competencias técnicas          │\n");
+	printf("  │  [3]  Proyectos                      │\n");
+	printf("  │  [4]  Formación y diplomas           │\n");
+	printf("  │  [5]  Experiencia profesional        │\n");
+	printf("  │  [0]  Salir                          │\n");
+	printf("  └─────────────────────────────────────┘\n");
+	printf("\n  > ");
+}
+
+static void	handle_choice(t_cv *cv, char choice)
+{
+	printf("\n");
+	if (choice == '1')
+		print_perfil(cv);
+	else if (choice == '2')
 		print_competencias(cv->competencias);
-		print_separator();
-	}
-	if (cv->proyectos)
-	{
+	else if (choice == '3')
 		print_proyectos(cv->proyectos);
-		print_separator();
-	}
-	if (cv->formacion)
-	{
+	else if (choice == '4')
 		print_formacion(cv->formacion);
-		print_separator();
-	}
-	if (cv->experiencia)
-	{
+	else if (choice == '5')
 		print_experiencia(cv->experiencia);
-		print_separator();
+	else if (choice != '0')
+		printf("  Opción no válida. Intenta de nuevo.\n");
+}
+
+void	run_menu(t_cv *cv)
+{
+	char	buf[2];
+
+	if (!cv)
+		return ;
+	print_header(cv);
+	while (1)
+	{
+		print_menu();
+		if (read(STDIN_FILENO, buf, 1) <= 0)
+			break ;
+		buf[1] = '\0';
+		if (buf[0] == '0')
+		{
+			printf("\n  /* TODO: recrutar_talento(este_candidato); */\n\n");
+			break ;
+		}
+		if (buf[0] != '\n')
+			handle_choice(cv, buf[0]);
+		while (read(STDIN_FILENO, buf, 1) == 1 && buf[0] != '\n')
+			;
 	}
-	
-	printf("/* TODO: recrutar_talento(este_candidato); */\n\n");
 }

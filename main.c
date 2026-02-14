@@ -195,10 +195,10 @@ int	main(void)
 		return (1);
 	
 	// Información personal
-	cv->nombre = strdup("TU NOMBRE");
+	cv->nombre = strdup("Timothee Pablo Mege");
 	cv->ubicacion = strdup("Barcelona, España");
-	cv->email = strdup("tu.email@ejemplo.com");
-	cv->telefono = strdup("+34 XXX XXX XXX");
+	cv->email = strdup("timothe.mege@gmail.com");
+	cv->telefono = strdup("+34 613 444 715");
 	cv->perfil = strdup(
 		"Estudiante de informática en 42 Barcelona (metodología basada en proyectos, "
 		"autonomía y aprendizaje entre pares). Desarrollo competencias sólidas en C, Bash "
@@ -215,8 +215,8 @@ int	main(void)
 	populate_formacion(cv);
 	populate_experiencia(cv);
 	
-	// Mostrar CV
-	print_cv(cv);
+	// Menu interactivo
+	run_menu(cv);
 	
 	// Liberar memoria
 	free_cv(cv);

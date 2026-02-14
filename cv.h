@@ -4,6 +4,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
 
 /* ========== STRUCTURES ========== */
 
@@ -85,11 +86,15 @@ void			add_formacion(t_cv *cv, t_formacion *formacion);
 void			add_experiencia(t_cv *cv, t_experiencia *exp);
 
 // Funciones de display
-void			print_cv(t_cv *cv);
+void			print_header(t_cv *cv);
+void			print_perfil(t_cv *cv);
 void			print_competencias(t_competencias *comp);
 void			print_proyectos(t_proyecto *proyectos);
 void			print_formacion(t_formacion *formacion);
 void			print_experiencia(t_experiencia *exp);
+
+// Menu interactivo
+void			run_menu(t_cv *cv);
 
 // Funciones de liberación de memoria
 void			free_skills(t_skill *skills);

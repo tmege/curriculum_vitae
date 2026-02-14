@@ -1,4 +1,4 @@
-# 📄 CV en C - Curriculum Vitae Generator
+# 📄 CV Interactivo
 
 ## Descripción
 
@@ -75,15 +75,6 @@ make re      # Recompila todo
 - **Makefile avanzado**
 - **Headers y prototipos**
 - **Liberación recursiva de memoria**
-
-## Posibles mejoras
-
-- [ ] Exportar a JSON/XML
-- [ ] Búsqueda de competencias específicas
-- [ ] Filtrado por categorías
-- [ ] Ordenación por fechas
-- [ ] Estadísticas (años de experiencia, etc.)
-- [ ] Interfaz interactiva (menú)
 
 ## Licencia
 

@@ -172,16 +172,16 @@ static void	print_menu(void)
 {
 	printf("\n");
 	print_separator();
-	printf("  ┌─────────────────────────────────────┐\n");
-	printf("  │          SELECCIONA UNA SECCIÓN      │\n");
-	printf("  ├─────────────────────────────────────┤\n");
-	printf("  │  [1]  Perfil profesional             │\n");
-	printf("  │  [2]  Competencias técnicas          │\n");
-	printf("  │  [3]  Proyectos                      │\n");
-	printf("  │  [4]  Formación y diplomas           │\n");
-	printf("  │  [5]  Experiencia profesional        │\n");
-	printf("  │  [0]  Salir                          │\n");
-	printf("  └─────────────────────────────────────┘\n");
+	printf("  ┌─────────────────────────────────────────┐\n");
+	printf("  │          SELECCIONA UNA SECCIÓN         │\n");
+	printf("  ├─────────────────────────────────────────┤\n");
+	printf("  │  [1]  Perfil profesional                │\n");
+	printf("  │  [2]  Competencias técnicas             │\n");
+	printf("  │  [3]  Proyectos                         │\n");
+	printf("  │  [4]  Formación y diplomas              │\n");
+	printf("  │  [5]  Experiencia profesional           │\n");
+	printf("  │  [0]  Salir                             │\n");
+	printf("  └─────────────────────────────────────────┘\n");
 	printf("\n  > ");
 }
 
@@ -208,9 +208,9 @@ void	run_menu(t_cv *cv)
 
 	if (!cv)
 		return ;
-	print_header(cv);
 	while (1)
 	{
+		print_header(cv);
 		print_menu();
 		if (read(STDIN_FILENO, buf, 1) <= 0)
 			break ;

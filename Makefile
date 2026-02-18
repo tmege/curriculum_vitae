@@ -37,10 +37,10 @@ RESET = \033[0m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "$(BLUE)Compilando $(NAME)...$(RESET)"
+	@echo "$(BLUE)Compiling $(NAME)...$(RESET)"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo "$(GREEN)✓ $(NAME) compilado con éxito!$(RESET)"
-	@echo "$(GREEN)Ejecuta: ./$(NAME)$(RESET)"
+	@echo "$(GREEN)✓ $(NAME) compiled successfully!$(RESET)"
+	@echo "$(GREEN)Run: ./$(NAME)$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 	@mkdir -p $(OBJ_DIR)
@@ -48,22 +48,22 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "$(RED)✗ Archivos objeto eliminados$(RESET)"
+	@echo "$(RED)✗ Object files removed$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(RED)✗ $(NAME) eliminado$(RESET)"
+	@echo "$(RED)✗ $(NAME) removed$(RESET)"
 
 re: fclean all
 
 run: all
 	@echo "$(BLUE)━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$(RESET)"
-	@echo "$(GREEN)          🚀 Ejecutando CV en C 🚀$(RESET)"
+	@echo "$(GREEN)          🚀 Running CV in C 🚀$(RESET)"
 	@echo "$(BLUE)━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$(RESET)"
 	@./$(NAME)
 
 valgrind: all
-	@echo "$(BLUE)Ejecutando Valgrind...$(RESET)"
+	@echo "$(BLUE)Running Valgrind...$(RESET)"
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 .PHONY: all clean fclean re run valgrind

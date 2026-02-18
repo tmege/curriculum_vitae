@@ -13,66 +13,66 @@ void	free_skills(t_skill *skills)
 	}
 }
 
-void	free_competencias(t_competencias *comp)
+void	free_competencies(t_competencies *comp)
 {
 	if (!comp)
 		return ;
-	free_skills(comp->lenguajes);
-	free_skills(comp->herramientas);
-	free_skills(comp->sistemas);
-	free_skills(comp->competencias_tecnicas);
-	free_skills(comp->idiomas);
+	free_skills(comp->languages);
+	free_skills(comp->tools);
+	free_skills(comp->systems);
+	free_skills(comp->technical_skills);
+	free_skills(comp->spoken_languages);
 	free(comp);
 }
 
-void	free_proyectos(t_proyecto *proyectos)
+void	free_projects(t_project *projects)
 {
-	t_proyecto	*tmp;
+	t_project	*tmp;
 
-	while (proyectos)
+	while (projects)
 	{
-		tmp = proyectos;
-		proyectos = proyectos->next;
-		free(tmp->titulo);
-		free(tmp->lugar);
-		free(tmp->descripcion);
-		free_skills(tmp->tecnologias);
+		tmp = projects;
+		projects = projects->next;
+		free(tmp->title);
+		free(tmp->location);
+		free(tmp->description);
+		free_skills(tmp->technologies);
 		free(tmp);
 	}
 }
 
-void	free_formacion(t_formacion *formacion)
+void	free_education(t_education *education)
 {
-	t_formacion	*tmp;
+	t_education	*tmp;
 
-	while (formacion)
+	while (education)
 	{
-		tmp = formacion;
-		formacion = formacion->next;
-		free(tmp->titulo);
-		free(tmp->institucion);
-		free(tmp->ubicacion);
-		free(tmp->fecha_inicio);
-		free(tmp->fecha_fin);
-		free(tmp->descripcion);
+		tmp = education;
+		education = education->next;
+		free(tmp->title);
+		free(tmp->institution);
+		free(tmp->location);
+		free(tmp->start_date);
+		free(tmp->end_date);
+		free(tmp->description);
 		free(tmp);
 	}
 }
 
-void	free_experiencia(t_experiencia *exp)
+void	free_experience(t_experience *exp)
 {
-	t_experiencia	*tmp;
+	t_experience	*tmp;
 
 	while (exp)
 	{
 		tmp = exp;
 		exp = exp->next;
-		free(tmp->puesto);
-		free(tmp->empresa);
-		free(tmp->ubicacion);
-		free(tmp->fecha_inicio);
-		free(tmp->fecha_fin);
-		free_skills(tmp->responsabilidades);
+		free(tmp->position);
+		free(tmp->company);
+		free(tmp->location);
+		free(tmp->start_date);
+		free(tmp->end_date);
+		free_skills(tmp->responsibilities);
 		free(tmp);
 	}
 }
@@ -81,14 +81,16 @@ void	free_cv(t_cv *cv)
 {
 	if (!cv)
 		return ;
-	free(cv->nombre);
-	free(cv->ubicacion);
+	free(cv->name);
+	free(cv->title);
+	free(cv->location);
 	free(cv->email);
-	free(cv->telefono);
-	free(cv->perfil);
-	free_competencias(cv->competencias);
-	free_proyectos(cv->proyectos);
-	free_formacion(cv->formacion);
-	free_experiencia(cv->experiencia);
+	free(cv->phone);
+	free(cv->github);
+	free(cv->profile);
+	free_competencies(cv->competencies);
+	free_projects(cv->projects);
+	free_education(cv->education);
+	free_experience(cv->experience);
 	free(cv);
 }

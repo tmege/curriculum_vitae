@@ -1,89 +1,89 @@
-# 📄 CV Interactivo
+# Interactive CV
 
-## Descripción
+## Description
 
-Este proyecto implementa mi CV completo utilizando estructuras de datos en C, específicamente listas enlazadas simples. Es un ejemplo práctico de gestión dinámica de memoria, organización modular de código y uso de estructuras complejas.
+This project implements my full CV using data structures in C, specifically singly linked lists. It is a practical example of dynamic memory management, modular code organization and the use of complex structures.
 
-## Arquitectura
+## Architecture
 
 ```
 cv/
-├── cv.h           # Definiciones de estructuras y prototipos
-├── main.c         # Punto de entrada y población de datos
-├── utils.c        # Funciones de creación y gestión de listas
-├── print.c        # Funciones de visualización
-├── free.c         # Gestión de memoria
-├── Makefile       # Compilación automatizada
-└── README.md      # Este archivo
+├── cv.h           # Structure definitions and prototypes
+├── main.c         # Entry point and data population
+├── utils.c        # Creation and list management functions
+├── print.c        # Display functions
+├── free.c         # Memory management
+├── Makefile       # Automated compilation
+└── README.md      # This file
 ```
 
-## Estructuras de datos
+## Data structures
 
-### Principales estructuras:
+### Main structures:
 
-- **t_cv**: Estructura principal que contiene todas las secciones
-- **t_competencias**: Agrupa todas las competencias técnicas
-- **t_proyecto**: Lista enlazada de proyectos
-- **t_formacion**: Lista enlazada de formación académica
-- **t_experiencia**: Lista enlazada de experiencia profesional
-- **t_skill**: Lista enlazada genérica para habilidades
+- **t_cv**: Main structure containing all sections
+- **t_competencies**: Groups all technical skills by category
+- **t_project**: Linked list of projects
+- **t_education**: Linked list of education entries
+- **t_experience**: Linked list of professional experience
+- **t_skill**: Generic linked list for skills
 
-Todas las listas utilizan nodos enlazados simples (`next`).
+All lists use singly linked nodes (`next`).
 
-## Compilación y uso
+## Compilation and usage
 
-### Compilar:
+### Compile:
 ```bash
 make
 ```
 
-### Ejecutar:
+### Run:
 ```bash
 ./cv
-# o
+# or
 make run
 ```
 
-### Verificar memory leaks con Valgrind:
+### Check for memory leaks with Valgrind:
 ```bash
 make valgrind
 ```
 
-### Limpiar:
+### Clean:
 ```bash
-make clean   # Elimina .o
-make fclean  # Elimina .o y ejecutable
-make re      # Recompila todo
+make clean   # Remove .o files
+make fclean  # Remove .o files and binary
+make re      # Recompile everything
 ```
 
-## Características
+## Features
 
-✅ Gestión dinámica de memoria (malloc/free)
-✅ Listas enlazadas simples
-✅ Código modular y organizado
-✅ Sin memory leaks (comprobado con Valgrind)
-✅ Makefile con normas de 42
-✅ Interfaz visual en terminal con Unicode
-✅ Estructura escalable y mantenible
+✅ Dynamic memory management (malloc/free)
+✅ Singly linked lists
+✅ Modular and organized code
+✅ No memory leaks (verified with Valgrind)
+✅ Makefile following 42 norms
+✅ Terminal visual interface with Unicode
+✅ Scalable and maintainable structure
 
-## Conceptos demostrados
+## Concepts demonstrated
 
-- **Estructuras y typedef**
-- **Listas enlazadas**
-- **Gestión de memoria dinámica**
-- **Modularización de código**
-- **Makefile avanzado**
-- **Headers y prototipos**
-- **Liberación recursiva de memoria**
+- **Structures and typedef**
+- **Linked lists**
+- **Dynamic memory management**
+- **Code modularization**
+- **Advanced Makefile**
+- **Headers and prototypes**
+- **Recursive memory freeing**
 
-## Licencia
+## License
 
-Este proyecto es de código abierto y está disponible como ejemplo educativo.
+This project is open source and available as an educational example.
 
 ---
 
-*Proyecto creado como demostración de competencias en C y gestión de estructuras de datos.*
+*Project created as a demonstration of C skills and data structure management.*
 
 ```c
-/* TODO: recrutar_talento(este_candidato); */
+/* TODO: hire_talent(this_candidate); */
 ```

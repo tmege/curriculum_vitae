@@ -16,109 +16,144 @@ static void	print_separator(void)
 	printf("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n");
 }
 
+static int	utf8_len(const char *str)
+{
+	int	len;
+
+	len = 0;
+	while (*str)
+	{
+		if ((*str & 0xC0) != 0x80)
+			len++;
+		str++;
+	}
+	return (len);
+}
+
+static void	print_centered(const char *str, int width)
+{
+	int	len;
+	int	pad_left;
+	int	pad_right;
+	int	i;
+
+	len = utf8_len(str);
+	pad_left = (width - len) / 2;
+	pad_right = width - len - pad_left;
+	printf("██");
+	i = -1;
+	while (++i < pad_left)
+		printf(" ");
+	printf("%s", str);
+	i = -1;
+	while (++i < pad_right)
+		printf(" ");
+	printf("██\n");
+}
+
 /* ========== PRINT FUNCTIONS ========== */
 
-void	print_competencias(t_competencias *comp)
+void	print_competencies(t_competencies *comp)
 {
 	if (!comp)
 		return ;
 	printf("╔══════════════════════════════════════════════════════════════════╗\n");
-	printf("║              COMPETENCIAS TÉCNICAS                               ║\n");
+	printf("║                    TECHNICAL SKILLS                              ║\n");
 	printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
-	
-	if (comp->lenguajes)
+
+	if (comp->languages)
 	{
-		printf("Lenguajes:\n");
-		print_skill_list(comp->lenguajes);
+		printf("Languages:\n");
+		print_skill_list(comp->languages);
 		printf("\n");
 	}
-	if (comp->herramientas)
+	if (comp->tools)
 	{
-		printf("Herramientas:\n");
-		print_skill_list(comp->herramientas);
+		printf("Tools:\n");
+		print_skill_list(comp->tools);
 		printf("\n");
 	}
-	if (comp->sistemas)
+	if (comp->systems)
 	{
-		printf("Sistemas:\n");
-		print_skill_list(comp->sistemas);
+		printf("Systems:\n");
+		print_skill_list(comp->systems);
 		printf("\n");
 	}
-	if (comp->competencias_tecnicas)
+	if (comp->technical_skills)
 	{
-		printf("Competencias técnicas:\n");
-		print_skill_list(comp->competencias_tecnicas);
+		printf("Technical skills:\n");
+		print_skill_list(comp->technical_skills);
 		printf("\n");
 	}
-	if (comp->idiomas)
+	if (comp->spoken_languages)
 	{
-		printf("Idiomas:\n");
-		print_skill_list(comp->idiomas);
+		printf("Spoken languages:\n");
+		print_skill_list(comp->spoken_languages);
 	}
 }
 
-void	print_proyectos(t_proyecto *proyectos)
+void	print_projects(t_project *projects)
 {
 	printf("╔══════════════════════════════════════════════════════════════════╗\n");
-	printf("║         PROYECTOS Y EXPERIENCIA EN DESARROLLO                    ║\n");
+	printf("║           PROJECTS & DEVELOPMENT EXPERIENCE                      ║\n");
 	printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
-	
-	while (proyectos)
+
+	while (projects)
 	{
-		printf("▸ %s\n", proyectos->titulo);
-		printf("  %s\n\n", proyectos->lugar);
-		printf("  %s\n", proyectos->descripcion);
-		
-		if (proyectos->tecnologias)
+		printf("▸ %s\n", projects->title);
+		printf("  %s\n\n", projects->location);
+		printf("  %s\n", projects->description);
+
+		if (projects->technologies)
 		{
-			printf("\n  Tecnologías utilizadas:\n");
-			print_skill_list(proyectos->tecnologias);
+			printf("\n  Technologies used:\n");
+			print_skill_list(projects->technologies);
 		}
-		
-		if (proyectos->next)
+
+		if (projects->next)
 			printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n");
-		proyectos = proyectos->next;
+		projects = projects->next;
 	}
 }
 
-void	print_formacion(t_formacion *formacion)
+void	print_education(t_education *education)
 {
 	printf("╔══════════════════════════════════════════════════════════════════╗\n");
-	printf("║                    FORMACIÓN Y DIPLOMAS                          ║\n");
+	printf("║                 EDUCATION & QUALIFICATIONS                       ║\n");
 	printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
-	
-	while (formacion)
+
+	while (education)
 	{
-		printf("▸ %s\n", formacion->titulo);
-		printf("  %s, %s\n", formacion->institucion, formacion->ubicacion);
-		printf("  %s - %s\n", formacion->fecha_inicio, formacion->fecha_fin);
-		if (formacion->descripcion && strlen(formacion->descripcion) > 0)
-			printf("  %s\n", formacion->descripcion);
-		
-		if (formacion->next)
+		printf("▸ %s\n", education->title);
+		printf("  %s, %s\n", education->institution, education->location);
+		printf("  %s - %s\n", education->start_date, education->end_date);
+		if (education->description && strlen(education->description) > 0)
+			printf("  %s\n", education->description);
+
+		if (education->next)
 			printf("\n");
-		formacion = formacion->next;
+		education = education->next;
 	}
 }
 
-void	print_experiencia(t_experiencia *exp)
+void	print_experience(t_experience *exp)
 {
 	printf("╔══════════════════════════════════════════════════════════════════╗\n");
-	printf("║                  EXPERIENCIA PROFESIONAL                         ║\n");
+	printf("║                  PROFESSIONAL EXPERIENCE                         ║\n");
 	printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
-	
+
 	while (exp)
 	{
-		printf("▸ %s\n", exp->puesto);
-		printf("  %s, %s\n", exp->empresa, exp->ubicacion);
-		printf("  %s - %s\n\n", exp->fecha_inicio, exp->fecha_fin);
-		
-		if (exp->responsabilidades)
+		printf("▸ %s\n", exp->position);
+		printf("  %s, %s\n", exp->company, exp->location);
+		printf("  %s - %s\n\n", exp->start_date, exp->end_date);
+
+		if (exp->responsibilities)
 		{
-			printf("  Responsabilidades:\n");
-			print_skill_list(exp->responsabilidades);
+			printf("  Responsibilities:\n");
+			print_skill_list(exp->responsibilities);
 		}
-		
+
 		if (exp->next)
 			printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n");
 		exp = exp->next;
@@ -127,45 +162,30 @@ void	print_experiencia(t_experiencia *exp)
 
 void	print_header(t_cv *cv)
 {
-	int	width;
-	int	name_len;
-	int	pad_left;
-	int	pad_right;
-	int	i;
-
 	if (!cv)
 		return ;
-	width = 64;
-	name_len = strlen(cv->nombre);
-	pad_left = (width - name_len) / 2;
-	pad_right = width - name_len - pad_left;
 	printf("\n");
 	printf("████████████████████████████████████████████████████████████████████\n");
 	printf("██                                                                ██\n");
-	printf("██");
-	i = -1;
-	while (++i < pad_left)
-		printf(" ");
-	printf("%s", cv->nombre);
-	i = -1;
-	while (++i < pad_right)
-		printf(" ");
-	printf("██\n");
+	if (cv->name)
+		print_centered(cv->name, 64);
+	if (cv->title)
+		print_centered(cv->title, 64);
 	printf("██                                                                ██\n");
 	printf("████████████████████████████████████████████████████████████████████\n");
 	printf("\n");
-	printf("  📍 %s  |  📧 %s  |  📞 %s\n", cv->ubicacion, cv->email,
-		cv->telefono);
+	printf("  📍 %s  |  📧 %s  |  📱 %s  |  🔗 %s\n",
+		cv->location, cv->email, cv->phone, cv->github);
 }
 
-void	print_perfil(t_cv *cv)
+void	print_profile(t_cv *cv)
 {
 	if (!cv)
 		return ;
 	printf("╔══════════════════════════════════════════════════════════════════╗\n");
-	printf("║                     PERFIL PROFESIONAL                           ║\n");
+	printf("║                    PROFESSIONAL PROFILE                          ║\n");
 	printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
-	printf("%s\n", cv->perfil);
+	printf("%s\n", cv->profile);
 }
 
 static void	print_menu(void)
@@ -173,14 +193,14 @@ static void	print_menu(void)
 	printf("\n");
 	print_separator();
 	printf("  ┌─────────────────────────────────────────┐\n");
-	printf("  │          SELECCIONA UNA SECCIÓN         │\n");
+	printf("  │           SELECT A SECTION              │\n");
 	printf("  ├─────────────────────────────────────────┤\n");
-	printf("  │  [1]  Perfil profesional                │\n");
-	printf("  │  [2]  Competencias técnicas             │\n");
-	printf("  │  [3]  Proyectos                         │\n");
-	printf("  │  [4]  Formación y diplomas              │\n");
-	printf("  │  [5]  Experiencia profesional           │\n");
-	printf("  │  [0]  Salir                             │\n");
+	printf("  │  [1]  Professional profile              │\n");
+	printf("  │  [2]  Technical skills                  │\n");
+	printf("  │  [3]  Projects                          │\n");
+	printf("  │  [4]  Education & qualifications        │\n");
+	printf("  │  [5]  Professional experience           │\n");
+	printf("  │  [0]  Exit                              │\n");
 	printf("  └─────────────────────────────────────────┘\n");
 	printf("\n  > ");
 }
@@ -189,17 +209,17 @@ static void	handle_choice(t_cv *cv, char choice)
 {
 	printf("\n");
 	if (choice == '1')
-		print_perfil(cv);
+		print_profile(cv);
 	else if (choice == '2')
-		print_competencias(cv->competencias);
+		print_competencies(cv->competencies);
 	else if (choice == '3')
-		print_proyectos(cv->proyectos);
+		print_projects(cv->projects);
 	else if (choice == '4')
-		print_formacion(cv->formacion);
+		print_education(cv->education);
 	else if (choice == '5')
-		print_experiencia(cv->experiencia);
+		print_experience(cv->experience);
 	else if (choice != '0')
-		printf("  Opción no válida. Intenta de nuevo.\n");
+		printf("  Invalid option. Please try again.\n");
 }
 
 void	run_menu(t_cv *cv)
@@ -217,7 +237,7 @@ void	run_menu(t_cv *cv)
 		buf[1] = '\0';
 		if (buf[0] == '0')
 		{
-			printf("\n  /* TODO: recrutar_talento(este_candidato); */\n\n");
+			printf("\n  /* TODO: hire_talent(this_candidate); */\n\n");
 			break ;
 		}
 		if (buf[0] != '\n')

@@ -85,6 +85,8 @@ void	free_cv(t_cv *cv)
 	free(cv->ubicacion);
 	free(cv->email);
 	free(cv->telefono);
+	free(cv->github);
+	free(cv->linkedin);
 	free(cv->perfil);
 	free_competencias(cv->competencias);
 	free_proyectos(cv->proyectos);

@@ -60,6 +60,8 @@ typedef struct s_cv
 	char			*ubicacion;
 	char			*email;
 	char			*telefono;
+	char			*github;
+	char			*linkedin;
 	char			*perfil;
 	t_competencias	*competencias;
 	t_proyecto		*proyectos;

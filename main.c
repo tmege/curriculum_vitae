@@ -3,139 +3,171 @@
 static void	populate_competencias(t_cv *cv)
 {
 	cv->competencias = competencias_init();
-	
-	// Lenguajes
+
+	// Programming Languages
 	skill_add_back(&cv->competencias->lenguajes, skill_new("C"));
-	skill_add_back(&cv->competencias->lenguajes, skill_new("Python"));
 	skill_add_back(&cv->competencias->lenguajes, skill_new("Bash"));
-	
-	// Herramientas
-	skill_add_back(&cv->competencias->herramientas, skill_new("Git/GitHub"));
-	skill_add_back(&cv->competencias->herramientas, skill_new("n8n"));
-	skill_add_back(&cv->competencias->herramientas, skill_new("VSCode"));
-	skill_add_back(&cv->competencias->herramientas, skill_new("Vim"));
+	skill_add_back(&cv->competencias->lenguajes, skill_new("C++ (basics)"));
+	skill_add_back(&cv->competencias->lenguajes, skill_new("Python (basics)"));
+
+	// Tools / Frameworks
+	skill_add_back(&cv->competencias->herramientas, skill_new("Linux"));
 	skill_add_back(&cv->competencias->herramientas, skill_new("Docker"));
 	skill_add_back(&cv->competencias->herramientas, skill_new("VirtualBox"));
-	
-	// Sistemas
-	skill_add_back(&cv->competencias->sistemas, skill_new("Linux (Arch)"));
-	skill_add_back(&cv->competencias->sistemas, skill_new("Windows"));
-	skill_add_back(&cv->competencias->sistemas, skill_new("macOS"));
-	
-	// Competencias técnicas
-	skill_add_back(&cv->competencias->competencias_tecnicas, skill_new("Parsing y procesamiento de texto"));
-	skill_add_back(&cv->competencias->competencias_tecnicas, skill_new("Pipes y redirecciones"));
-	skill_add_back(&cv->competencias->competencias_tecnicas, skill_new("Gestión de memoria (malloc/free)"));
-	skill_add_back(&cv->competencias->competencias_tecnicas, skill_new("Debugging (gdb, valgrind)"));
-	skill_add_back(&cv->competencias->competencias_tecnicas, skill_new("Scripts Bash y automatización"));
-	skill_add_back(&cv->competencias->competencias_tecnicas, skill_new("Gestión de proyectos"));
-	skill_add_back(&cv->competencias->competencias_tecnicas, skill_new("Trabajo en equipo"));
-	
-	// Idiomas
-	skill_add_back(&cv->competencias->idiomas, skill_new("Francés (nativo)"));
-	skill_add_back(&cv->competencias->idiomas, skill_new("Inglés (fluido)"));
-	skill_add_back(&cv->competencias->idiomas, skill_new("Español (profesional)"));
+	skill_add_back(&cv->competencias->herramientas, skill_new("Git/GitHub"));
+	skill_add_back(&cv->competencias->herramientas, skill_new("Vim & NeoVim"));
+
+	// Low-Level Skills
+	skill_add_back(&cv->competencias->sistemas, skill_new("Parsing"));
+	skill_add_back(&cv->competencias->sistemas, skill_new("Memory management"));
+	skill_add_back(&cv->competencias->sistemas, skill_new("UNIX processes"));
+	skill_add_back(&cv->competencias->sistemas, skill_new("Pipes & redirections"));
+	skill_add_back(&cv->competencias->sistemas, skill_new("Debugging"));
+	skill_add_back(&cv->competencias->sistemas, skill_new("Bash scripting"));
+
+	// AI & Other Skills
+	skill_add_back(&cv->competencias->competencias_tecnicas,
+		skill_new("Task automations"));
+	skill_add_back(&cv->competencias->competencias_tecnicas,
+		skill_new("API integrations"));
+	skill_add_back(&cv->competencias->competencias_tecnicas,
+		skill_new("AI workflows & tool chaining"));
+	skill_add_back(&cv->competencias->competencias_tecnicas,
+		skill_new("Prompt engineering"));
+	skill_add_back(&cv->competencias->competencias_tecnicas,
+		skill_new("LLMs (Hugging Face, Anthropic APIs, n8n)"));
+
+	// Languages
+	skill_add_back(&cv->competencias->idiomas, skill_new("French (native)"));
+	skill_add_back(&cv->competencias->idiomas, skill_new("English (fluent)"));
+	skill_add_back(&cv->competencias->idiomas, skill_new("Spanish (fluent)"));
 }
 
 static void	populate_proyectos(t_cv *cv)
 {
 	t_proyecto	*proyecto;
-	
-	// Mini-shell
+
+	// 42 School Projects
 	proyecto = proyecto_new(
-		"Mini-shell en C",
+		"42 School C Projects",
 		"42 Barcelona",
-		"Diseño e implementación de un shell simplificado en C con parsing de comandos, "
-		"gestión de pipes, redirecciones I/O y ejecución de comandos externos. "
-		"Gestión rigurosa de memoria y manejo de errores."
+		"Intensive, low-level C projects consisting of memory, concurrency,\n"
+		"  UNIX processes, and algorithms:\n"
+		"  - MiniShell: parsing, pipes, redirections, command execution, memory mgmt\n"
+		"  - Philosophers: concurrent programming with mutexes & deadlock prevention\n"
+		"  - Pipex: recreation of UNIX pipelines\n"
+		"  - Push_swap: algorithmic optimization\n"
+		"  - So_long & cub3d: game logic, key loops, graphics & ray-casting\n"
+		"  - Libft / Get_next_line: custom C library and buffer management\n"
+		"  - NetPractice: TCP/IP networking, subnet config, IP addressing, routing"
 	);
 	skill_add_back(&proyecto->tecnologias, skill_new("C"));
 	skill_add_back(&proyecto->tecnologias, skill_new("Makefile"));
 	skill_add_back(&proyecto->tecnologias, skill_new("System calls"));
+	skill_add_back(&proyecto->tecnologias, skill_new("Algorithms"));
 	add_proyecto(cv, proyecto);
-	
-	// Biblioteca de funciones
+
+	// AI News Aggregator
 	proyecto = proyecto_new(
-		"Biblioteca de funciones (libft)",
-		"42 Barcelona",
-		"Desarrollo de una biblioteca de funciones fundamentales de bajo nivel, "
-		"reimplementando funciones estándar de C y estructuras de datos."
+		"AI-Powered News Aggregator",
+		"Personal project",
+		"Built an AI-powered news aggregator integrated into Discord, using APIs\n"
+		"  and LLMs to deliver daily technology updates automatically with a cron tab."
 	);
-	skill_add_back(&proyecto->tecnologias, skill_new("C"));
-	skill_add_back(&proyecto->tecnologias, skill_new("Estructuras de datos"));
-	skill_add_back(&proyecto->tecnologias, skill_new("Gestión de memoria"));
+	skill_add_back(&proyecto->tecnologias, skill_new("APIs"));
+	skill_add_back(&proyecto->tecnologias, skill_new("LLMs"));
+	skill_add_back(&proyecto->tecnologias, skill_new("Discord"));
+	skill_add_back(&proyecto->tecnologias, skill_new("Cron"));
 	add_proyecto(cv, proyecto);
-	
-	// Administración de sistemas
+
+	// Artist Dashboard
 	proyecto = proyecto_new(
-		"Administración de sistemas",
-		"Proyecto personal",
-		"Configuración y administración de Arch Linux, automatización de tareas "
-		"mediante scripts Bash, gestión de servicios y optimización del sistema."
+		"Artist Dashboard",
+		"Personal project",
+		"Developed an artist dashboard that retrieves data from social media and\n"
+		"  streaming platforms via automated workflows, including OAuth authentication."
 	);
-	skill_add_back(&proyecto->tecnologias, skill_new("Arch Linux"));
-	skill_add_back(&proyecto->tecnologias, skill_new("Bash"));
-	skill_add_back(&proyecto->tecnologias, skill_new("systemd"));
-	add_proyecto(cv, proyecto);
-	
-	// Automatización y LLM
-	proyecto = proyecto_new(
-		"Automatización con LLM y scraping de datos",
-		"Proyectos personales",
-		"Creación de un bot para scraping de datos vía API. "
-		"Automatización de workflows con n8n y experimentación con modelos de lenguaje (LLM)."
-	);
-	skill_add_back(&proyecto->tecnologias, skill_new("Python"));
+	skill_add_back(&proyecto->tecnologias, skill_new("APIs"));
+	skill_add_back(&proyecto->tecnologias, skill_new("OAuth"));
 	skill_add_back(&proyecto->tecnologias, skill_new("n8n"));
-	skill_add_back(&proyecto->tecnologias, skill_new("APIs REST"));
+	add_proyecto(cv, proyecto);
+
+	// Trading Bot Dashboard
+	proyecto = proyecto_new(
+		"Trading Bot Dashboard",
+		"Personal project",
+		"Built a trading bot dashboard combining market APIs and LLMs to retrieve\n"
+		"  data and analyze market sentiment."
+	);
+	skill_add_back(&proyecto->tecnologias, skill_new("Market APIs"));
+	skill_add_back(&proyecto->tecnologias, skill_new("LLMs"));
+	add_proyecto(cv, proyecto);
+
+	// Vocal Generation Tool
+	proyecto = proyecto_new(
+		"Vocal Generation Tool",
+		"Personal project",
+		"Built a vocal generation tool using local Hugging Face models."
+	);
+	skill_add_back(&proyecto->tecnologias, skill_new("Hugging Face"));
+	skill_add_back(&proyecto->tecnologias, skill_new("Python"));
+	add_proyecto(cv, proyecto);
+
+	// Hardware Projects
+	proyecto = proyecto_new(
+		"Hardware Projects",
+		"Personal projects",
+		"Soldering, PCB component replacement, motherboard repair, console modding,\n"
+		"  microphone/audio repair, cable fabrication, and low-voltage work."
+	);
 	add_proyecto(cv, proyecto);
 }
 
 static void	populate_formacion(t_cv *cv)
 {
 	t_formacion	*form;
-	
+
 	// 42 Barcelona
 	form = formacion_new(
-		"Formación en informática",
-		"42 Barcelona",
-		"España",
-		"Marzo 2025",
-		"En curso",
-		"Metodología basada en proyectos, aprendizaje peer-to-peer y autonomía"
+		"Computer Science Training",
+		"42",
+		"Barcelona",
+		"March 2025",
+		"Present",
+		""
 	);
 	add_formacion(cv, form);
-	
-	// CAP Electricista
+
+	// Professional Electrician Certificate
 	form = formacion_new(
-		"CAP Electricista",
-		"L'École Des Pros",
-		"Francia",
-		"Diciembre 2021",
-		"Junio 2022",
-		"Instalación, mantenimiento y cableado eléctrico"
+		"Professional Electrician Certificate",
+		"L'Ecole Des Pros",
+		"Paris",
+		"Dec 2021",
+		"June 2022",
+		""
 	);
 	add_formacion(cv, form);
-	
-	// Ingeniería de sonido
+
+	// Sound & Music Engineering
 	form = formacion_new(
-		"Ingeniería de sonido y música",
-		"L'Institut d'enregistrement du Canada",
-		"Canadá",
-		"Enero 2018",
-		"Enero 2019",
-		"Grabación, mezcla, masterización y dominio de software profesional"
+		"Professional Certificate in Sound & Music Engineering",
+		"RAC",
+		"Montreal",
+		"Jan 2018",
+		"Jan 2019",
+		""
 	);
 	add_formacion(cv, form);
-	
-	// Biología
+
+	// Biology
 	form = formacion_new(
-		"Licenciatura en Biología",
-		"Universidad de Montreal",
-		"Canadá",
-		"Septiembre 2014",
-		"Diciembre 2017",
-		"Análisis científicos, competencias en laboratorio y biología animal"
+		"Bachelor in Biology",
+		"Universite de Montreal",
+		"Montreal",
+		"Sept 2014",
+		"Dec 2017",
+		""
 	);
 	add_formacion(cv, form);
 }
@@ -143,46 +175,27 @@ static void	populate_formacion(t_cv *cv)
 static void	populate_experiencia(t_cv *cv)
 {
 	t_experiencia	*exp;
-	
-	// Studio 22 Barcelona
+
+	// Sound & Music Engineer
 	exp = experiencia_new(
-		"Ingeniero de sonido",
-		"Studio 22",
-		"Barcelona, España",
-		"Marzo 2023",
-		"Marzo 2025"
+		"Sound & Music Engineer",
+		"Studio 22, Barcelona & Studio Niel, Paris",
+		"",
+		"June 2019",
+		"Mar 2025"
 	);
-	skill_add_back(&exp->responsabilidades, skill_new("Grabación y mezcla de audio profesional"));
-	skill_add_back(&exp->responsabilidades, skill_new("Gestión de proyectos y planificación de sesiones"));
-	skill_add_back(&exp->responsabilidades, skill_new("Relación con clientes y comunicación técnica"));
-	skill_add_back(&exp->responsabilidades, skill_new("Trabajo en equipo y coordinación de recursos"));
+	skill_add_back(&exp->responsabilidades,
+		skill_new("Recording, mixing and mastering in a professional studio environment"));
 	add_experiencia(cv, exp);
-	
-	// Studio Niel París
+
+	// Electrician
 	exp = experiencia_new(
-		"Ingeniero de sonido",
-		"Studio Niel",
-		"París, Francia",
-		"Junio 2019",
-		"Junio 2022"
+		"Electrician",
+		"JP Sausset Electricite",
+		"",
+		"June 2022",
+		"Dec 2022"
 	);
-	skill_add_back(&exp->responsabilidades, skill_new("Grabación y mezcla de audio"));
-	skill_add_back(&exp->responsabilidades, skill_new("Gestión de proyectos"));
-	skill_add_back(&exp->responsabilidades, skill_new("Relación con clientes"));
-	skill_add_back(&exp->responsabilidades, skill_new("Coordinación de equipos de producción"));
-	add_experiencia(cv, exp);
-	
-	// Zoo de Kuala Lumpur
-	exp = experiencia_new(
-		"Voluntario en zoología",
-		"Zoo de Kuala Lumpur",
-		"Malasia",
-		"Verano 2016",
-		"Verano 2016"
-	);
-	skill_add_back(&exp->responsabilidades, skill_new("Cuidado y observación de animales"));
-	skill_add_back(&exp->responsabilidades, skill_new("Recopilación de datos de comportamiento"));
-	skill_add_back(&exp->responsabilidades, skill_new("Trabajo en equipo internacional"));
 	add_experiencia(cv, exp);
 }
 
@@ -194,19 +207,18 @@ int	main(void)
 	if (!cv)
 		return (1);
 	
-	// Información personal
-	cv->nombre = strdup("Timothee Pablo Mege");
-	cv->ubicacion = strdup("Barcelona, España");
-	cv->email = strdup("timothe.mege@gmail.com");
-	cv->telefono = strdup("+34 613 444 715");
+	// Personal info
+	cv->nombre = strdup("TIMOTHEE PABLO MEGE");
+	cv->ubicacion = strdup("Barcelona, Spain");
+	cv->email = strdup("t.p.mege@gmail.com");
+	cv->telefono = strdup("+34613444715");
+	cv->github = strdup("github.com/tmege");
+	cv->linkedin = strdup("linkedin.com/in/t-mege");
 	cv->perfil = strdup(
-		"Estudiante de informática en 42 Barcelona (metodología basada en proyectos, "
-		"autonomía y aprendizaje entre pares). Desarrollo competencias sólidas en C, Bash "
-		"y Python a través de proyectos concretos (mini-shell, gestión de sistemas, scripting, "
-		"scraping de datos). Con experiencia profesional rica en rigor, análisis y resolución "
-		"de problemas (ingeniería de sonido, electricidad, biología), busco un puesto junior "
-		"donde pueda poner en práctica mis aptitudes técnicas, contribuir a proyectos innovadores "
-		"y seguir progresando en mi camino como desarrollador."
+		"Computer Science student at 42 Barcelona (60%% completed) with a strong interest\n"
+		"in emerging technologies. Combining a systems programming background with\n"
+		"hands-on experience in AI-powered automation, looking to put these skills to\n"
+		"work in a professional environment while completing my training."
 	);
 	
 	// Poblar secciones

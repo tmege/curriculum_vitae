@@ -110,6 +110,8 @@ t_cv	*cv_init(void)
 	cv->ubicacion = NULL;
 	cv->email = NULL;
 	cv->telefono = NULL;
+	cv->github = NULL;
+	cv->linkedin = NULL;
 	cv->perfil = NULL;
 	cv->competencias = NULL;
 	cv->proyectos = NULL;

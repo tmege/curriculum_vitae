@@ -25,10 +25,10 @@ cv/
 ### Main structures:
 
 - **t_cv**: Main structure containing all CV sections
-- **t_competencias**: Groups all skill categories
-- **t_proyecto**: Linked list of projects
-- **t_formacion**: Linked list of education entries
-- **t_experiencia**: Linked list of professional experience
+- **t_competencies**: Groups all skill categories
+- **t_project**: Linked list of projects
+- **t_education**: Linked list of education entries
+- **t_experience**: Linked list of professional experience
 - **t_skill**: Generic linked list for skills and items
 
 All lists use singly linked nodes (`next`).

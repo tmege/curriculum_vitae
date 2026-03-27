@@ -14,15 +14,21 @@ NAME = cv
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
+INCLUDES = -I inc
+
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = inc
 
 SRCS = main.c \
        utils.c \
        print.c \
        free.c
 
-OBJS = $(SRCS:.c=.o)
+SRC_FILES = $(addprefix $(SRC_DIR)/, $(SRCS))
+OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-HEADER = cv.h
+HEADER = $(INC_DIR)/cv.h
 
 # Colors
 GREEN = \033[0;32m
@@ -32,17 +38,18 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJ_FILES)
 	@echo "$(BLUE)Compilando $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ_FILES) -o $(NAME)
 	@echo "$(GREEN)✓ $(NAME) compilado con éxito!$(RESET)"
 	@echo "$(GREEN)Ejecuta: ./$(NAME)$(RESET)"
 
-%.o: %.c $(HEADER)
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS)
+	@rm -rf $(OBJ_DIR)
 	@echo "$(RED)✗ Archivos objeto eliminados$(RESET)"
 
 fclean: clean

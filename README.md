@@ -8,13 +8,16 @@ This project implements a complete interactive CV using C data structures, speci
 
 ```
 cv/
-├── cv.h           # Structure definitions and function prototypes
-├── main.c         # Entry point and data population
-├── utils.c        # Creation functions and list management
-├── print.c        # Display functions and interactive menu
-├── free.c         # Memory management and cleanup
-├── Makefile       # Automated compilation
-└── README.md      # This file
+├── inc/
+│   └── cv.h           # Structure definitions and function prototypes
+├── src/
+│   ├── main.c         # Entry point and data population
+│   ├── utils.c        # Creation functions and list management
+│   ├── print.c        # Display functions and interactive menu
+│   └── free.c         # Memory management and cleanup
+├── obj/               # Object files (generated at build time)
+├── Makefile           # Automated compilation
+└── README.md          # This file
 ```
 
 ## Data Structures
